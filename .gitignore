@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Dataset (exclude large image files)
+data/Stanford40/JPEGImages/*.jpg
+data/Stanford40/XMLAnnotations/*.xml
+Stanford_Dataset/
+*.zip
+*.tar.gz
+
+# Trained Models (exclude large model files)
+models/saved_models/*.keras
+models/saved_models/*.h5
+models/checkpoints/**/*
+
+# Results (exclude generated files but keep structure)
+results/plots/*.png
+results/metrics/*.csv
+results/predictions/*.json
+results/predictions/*.png
+
+# Logs
+*.log
+logs/
+*.pkl
+
+# TensorBoard
+tensorboard/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+temp/
+tmp/
+
+# Keep directory structure with .gitkeep files
+!**/.gitkeep
