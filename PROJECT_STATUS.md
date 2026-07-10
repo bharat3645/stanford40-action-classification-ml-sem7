@@ -3,11 +3,11 @@
 ## Project Overview
 Complete deep learning system for human action recognition in still images using the Stanford 40 Actions dataset with multiple state-of-the-art architectures.
 
-## Completion Status: ✅ IN PROGRESS
+## Completion Status: Documented Reference Configuration
 
 ### Phase 1: Setup and Configuration ✅ COMPLETED
 - [x] Created `config.py` with all hyperparameters and paths
-- [x] Installed all required dependencies (TensorFlow 2.18.0, Keras, NumPy, Pandas, etc.)
+- [x] Installed all required dependencies (TensorFlow 2.15.0, Keras, NumPy, Pandas, etc.)
 - [x] Created complete directory structure (data, models, results, plots, metrics)
 - [x] Organized Stanford40 dataset (9,532 images)
 - [x] Generated XML annotations for all images
@@ -20,8 +20,8 @@ Complete deep learning system for human action recognition in still images using
 - [x] Tested data loading with sample images (50/50 passed)
 - [x] Verified image preprocessing pipeline (224x224x3)
 
-### Phase 3: Model Training 🔄 IN PROGRESS
-Training all models on full dataset (9,532 images) with 30 epochs:
+### Phase 3: Model Training (Planned Configuration)
+Training plan for all models on the full dataset (9,532 images) with 30 epochs -- see README.md for the results actually reported for this project:
 
 #### Models to Train:
 1. **Custom CNN** - ⏳ Queued
@@ -93,10 +93,6 @@ stanford40_action_classification/
 ├── models/
 │   ├── saved_models/ ✅ (models will be saved here)
 │   └── checkpoints/ ✅
-├── results/
-│   ├── plots/ ✅
-│   ├── metrics/ ✅
-│   └── predictions/ ✅
 ├── data_loader.py ✅
 ├── models.py ✅
 ├── train.py ✅
@@ -108,7 +104,7 @@ stanford40_action_classification/
 
 ## System Information
 - **Python Version**: 3.12
-- **TensorFlow Version**: 2.18.0
+- **TensorFlow Version**: 2.15.0
 - **GPU Available**: No (CPU training)
 - **Operating System**: Windows
 - **Total Dataset Size**: 9,532 images
@@ -166,14 +162,15 @@ print(f"Action: {result['top_class']} ({result['top_probability']:.2%})")
 - [x] Environment setup
 - [x] Dataset preparation  
 - [x] Configuration files
-- [🔄] Model training (IN PROGRESS)
+- [ ] Model training execution (see README.md for reported results)
 - [ ] Model evaluation
 - [ ] Inference testing
 - [ ] Documentation finalization
 - [ ] Results visualization
 
 ---
-**Status**: Training in progress - Full pipeline executing  
+**Status**: This file documents the planned training configuration and setup used for this
+project (dataset prep, hyperparameters, per-model training plan). For the results actually
+reported for this project, see [README.md](README.md#experiments-and-results).  
 **Started**: November 3, 2025  
-**Estimated Completion**: ~3-4 hours from start  
-**Current Task**: Training all models on full dataset (9,532 images, 30 epochs each)
+**Note**: Kept as a record of the experiment configuration rather than a live progress tracker.
