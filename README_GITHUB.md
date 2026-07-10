@@ -1,7 +1,7 @@
 # 🎯 Stanford40-DeepClassifier: Multi-Architecture Action Recognition System
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![TensorFlow 2.18+](https://img.shields.io/badge/TensorFlow-2.18+-orange.svg)](https://www.tensorflow.org/)
+[![TensorFlow 2.15+](https://img.shields.io/badge/TensorFlow-2.15+-orange.svg)](https://www.tensorflow.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A comprehensive deep learning framework for human action recognition using the Stanford 40 Actions dataset. This project implements and compares 5 state-of-the-art CNN architectures with end-to-end training, evaluation, and inference pipelines.
@@ -33,7 +33,7 @@ A comprehensive deep learning framework for human action recognition using the S
 
 ```bash
 Python 3.8+
-TensorFlow 2.18+
+TensorFlow 2.15+
 8GB+ RAM (16GB recommended)
 CUDA-compatible GPU (optional, recommended for faster training)
 ```
@@ -42,8 +42,8 @@ CUDA-compatible GPU (optional, recommended for faster training)
 
 ```bash
 # Clone the repository
-git clone https://github.com/bharat3645/stanford40_action_classification-ML-Sem7-.git
-cd stanford40_action_classification-ML-Sem7-
+git clone https://github.com/bharat3645/stanford40_action_classification-ML-Sem7.git
+cd stanford40_action_classification-ML-Sem7
 
 # Install dependencies
 pip install -r requirements.txt
@@ -383,7 +383,7 @@ If you use this code in your research, please cite:
   title = {Stanford40-DeepClassifier: Multi-Architecture Action Recognition System},
   year = {2025},
   publisher = {GitHub},
-  url = {https://github.com/bharat3645/stanford40_action_classification-ML-Sem7-}
+  url = {https://github.com/bharat3645/stanford40_action_classification-ML-Sem7}
 }
 ```
 
@@ -408,7 +408,7 @@ If you use this code in your research, please cite:
 ## 📞 Contact
 
 - **GitHub**: [@bharat3645](https://github.com/bharat3645)
-- **Project Link**: [https://github.com/bharat3645/stanford40_action_classification-ML-Sem7-](https://github.com/bharat3645/stanford40_action_classification-ML-Sem7-)
+- **Project Link**: [https://github.com/bharat3645/stanford40_action_classification-ML-Sem7](https://github.com/bharat3645/stanford40_action_classification-ML-Sem7)
 
 ## 🎓 Academic Context
 
