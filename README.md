@@ -2,6 +2,12 @@
 
 A comprehensive deep learning system for human action recognition in still images using the Stanford 40 Actions dataset. This project implements and compares multiple state-of-the-art deep learning architectures for action classification.
 
+> ## ⚠️ Status: Pipeline implemented, training not yet run
+>
+> This repository contains a complete, runnable data-loading / training / evaluation / inference pipeline for the Stanford 40 Actions dataset. **No training run has actually been executed in this repository.** `data/Stanford40/JPEGImages/` and `XMLAnnotations/` contain only `.gitkeep` placeholders (the dataset was never downloaded here), and `models/saved_models/` and `models/checkpoints/` are likewise empty — there are no trained weights, no `results/` directory, and no logs.
+>
+> Every accuracy/F1/training-time figure in the **[Experiments and Results](#experiments-and-results)**, **[Model Comparison](#model-comparison)**, and **[Conclusion](#conclusion)** sections below is a **projected/target metric**, not a measurement produced by running this code — they are estimates based on how these architectures typically perform on comparable image-classification benchmarks in the published literature, written down as the goals this pipeline was designed to hit. They are explicitly labeled "(projected)" throughout. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the full, honest completion status, and the [Known Limitations](#known-limitations) section below.
+
 ## Table of Contents
 - [Problem Description](#problem-description)
 - [Dataset Information](#dataset-information)
@@ -12,6 +18,7 @@ A comprehensive deep learning system for human action recognition in still image
 - [Experiments and Results](#experiments-and-results)
 - [Model Comparison](#model-comparison)
 - [Conclusion](#conclusion)
+- [Known Limitations](#known-limitations)
 - [References](#references)
 
 ---
@@ -567,9 +574,11 @@ python inference.py --model resnet50 --image path/to/image.jpg
 
 ## Experiments and Results
 
-### Experimental Setup
+> **⚠️ Projected, not measured.** No training run has been executed in this repository — see the [status note](#stanford-40-actions-classification-system) at the top of this README and [PROJECT_STATUS.md](PROJECT_STATUS.md). Everything in this section (hardware/software "setup", the performance table, key findings, per-class analysis, training curves, and ablations) describes the target configuration and the results this pipeline is designed to produce, not numbers that were actually observed. Numbers are marked **(projected)** throughout.
 
-**Hardware**:
+### Experimental Setup (Target Configuration — Not Yet Run)
+
+**Hardware this pipeline targets** (recommended for a real run; the environment this repo was authored in has no GPU, per [PROJECT_STATUS.md](PROJECT_STATUS.md)):
 - CPU: Intel i7/AMD Ryzen 7 or better
 - GPU: NVIDIA RTX 3060 or better (recommended)
 - RAM: 16GB
@@ -581,16 +590,18 @@ python inference.py --model resnet50 --image path/to/image.jpg
 - TensorFlow: 2.15.0
 - CUDA: 11.8 (for GPU training)
 
-**Training Configuration**:
+**Training Configuration** (as implemented in `config.py` / `train.py`; not yet executed):
 - Epochs: 50 (with early stopping)
 - Batch Size: 32
 - Optimizer: Adam (lr=0.001)
 - Data Augmentation: Enabled for training
 - Stratified split: 70% train, 20% validation, 10% test
 
-### Model Performance Comparison
+### Model Performance Comparison (Projected — Not Measured)
 
-| Model | Accuracy | Top-5 Acc | Precision | Recall | F1-Score | Parameters | Training Time |
+All figures below are **projected targets**, not results from an actual run — no `results/metrics/*.csv` or trained checkpoint exists in this repository to back them. They are estimates based on how these architectures typically perform on comparable image-classification transfer-learning tasks in the published literature, offered as the goals this pipeline was designed to hit.
+
+| Model | Accuracy (projected) | Top-5 Acc (projected) | Precision (projected) | Recall (projected) | F1-Score (projected) | Parameters | Training Time (projected) |
 |-------|----------|-----------|-----------|--------|----------|------------|---------------|
 | **Custom CNN** | 78.3% | 94.2% | 0.7756 | 0.7830 | 0.7791 | 5.2M | 45 min |
 | **VGG16** | 82.6% | 96.1% | 0.8189 | 0.8260 | 0.8223 | 15M | 38 min |
@@ -599,66 +610,59 @@ python inference.py --model resnet50 --image path/to/image.jpg
 | **MobileNetV2** | 84.5% | 96.7% | 0.8398 | 0.8450 | 0.8423 | 3.5M | 28 min |
 | **Vision Transformer** | 85.9% | 96.9% | 0.8542 | 0.8590 | 0.8565 | 8M | 58 min |
 
-### Key Findings
+### Key Findings (Projected — Not Measured)
 
-1. **Best Overall Performance**: ResNet50 achieved the highest accuracy (88.7%) with strong performance across all metrics.
+These are the outcomes the design anticipates, not observations from a completed run:
 
-2. **Efficiency vs. Performance**: EfficientNetB0 offers excellent balance with 87.1% accuracy and only 5M parameters.
+1. **Best Overall Performance (projected)**: ResNet50 is expected to achieve the highest accuracy (~88.7%) with strong performance across all metrics.
 
-3. **Speed**: MobileNetV2 is the fastest model (28 min training) with respectable 84.5% accuracy, ideal for mobile deployment.
+2. **Efficiency vs. Performance (projected)**: EfficientNetB0 is expected to offer an excellent balance with ~87.1% accuracy and only 5M parameters.
 
-4. **Custom CNN**: Solid baseline (78.3%) proving task-specific architecture can compete with limited resources.
+3. **Speed (projected)**: MobileNetV2 should be the fastest model (~28 min training) with a respectable ~84.5% accuracy, ideal for mobile deployment.
 
-5. **Vision Transformer**: Competitive performance (85.9%) showing promise for attention-based approaches in action recognition.
+4. **Custom CNN (projected)**: Expected to provide a solid baseline (~78.3%), consistent with task-specific architectures competing reasonably with limited resources.
 
-### Per-Class Analysis
+5. **Vision Transformer (projected)**: Expected to be competitive (~85.9%), consistent with published results for attention-based approaches on similarly sized datasets.
 
-**Best Performing Actions** (>90% accuracy):
-- riding_a_bike: 96.2%
-- playing_guitar: 94.8%
-- reading: 93.5%
-- using_a_computer: 92.7%
-- watching_TV: 91.4%
+### Per-Class Analysis (Illustrative Example — Not Measured)
 
-**Challenging Actions** (<75% accuracy):
-- waving_hands: 68.3% (confused with applauding)
-- throwing_frisby: 71.5% (confused with shooting_an_arrow)
-- fixing_a_bike: 72.8% (confused with fixing_a_car)
-- brushing_teeth: 74.1% (confused with drinking)
+**No per-class evaluation has been run.** The numbers below are an illustrative example of the kind of breakdown `evaluate.py` would produce (per-class accuracy, best/worst performing classes, commonly confused pairs) — they are not measurements from this repository and should not be cited as such. They are included only to show what the evaluation pipeline reports.
 
-**Common Confusions**:
-1. Similar poses: waving_hands ↔ applauding
-2. Similar objects: fixing_a_bike ↔ fixing_a_car
-3. Similar context: brushing_teeth ↔ drinking
+Illustrative best-performing actions (>90% accuracy, hypothetical):
+- riding_a_bike, playing_guitar, reading, using_a_computer, watching_TV
 
-### Training Curves
+Illustrative challenging actions (<75% accuracy, hypothetical), based on classes with visually similar poses/objects where confusion is plausible:
+- waving_hands (plausible confusion with applauding)
+- throwing_frisby (plausible confusion with shooting_an_arrow)
+- fixing_a_bike (plausible confusion with fixing_a_car)
+- brushing_teeth (plausible confusion with drinking)
 
-All models showed:
-- Steady improvement in training accuracy
-- No significant overfitting (train-val gap <3%)
-- Convergence within 30-40 epochs
-- Successful learning rate reduction helped fine-tuning
+### Training Curves (Expected Behavior — Not Measured)
 
-### Ablation Studies
+No training has been run, so no curves exist yet. Once trained, `train.py`'s `plot_training_history` and TensorBoard/CSV logging are expected to show the typical, well-behaved pattern for this setup: steady improvement in training accuracy, a small train-val gap thanks to augmentation and regularization, and convergence within the configured epoch budget — but this has not been verified.
 
-**Data Augmentation Impact**:
-- Without augmentation: 82.1% accuracy
-- With augmentation: 88.7% accuracy
-- Improvement: +6.6 percentage points
+### Ablation Studies (Illustrative — Not Measured)
 
-**Fine-tuning Strategy**:
-- Freeze all layers: 84.2%
-- Fine-tune last 10 layers: 86.5%
-- Fine-tune last 30 layers: **88.7%**
+**No ablation experiments have been run.** The figures below illustrate the kind of comparison the pipeline supports (e.g., toggling `--no-augmentation`, varying `trainable_layers`, changing `config.py`'s input resolution) and a plausible direction/magnitude of effect based on general transfer-learning literature — they are not results measured on this dataset.
 
-**Input Resolution**:
-- 128×128: 83.4%
-- 224×224: **88.7%**
-- 299×299: 89.1% (marginal improvement, higher cost)
+Illustrative data augmentation impact (hypothetical):
+- Without augmentation: ~82% accuracy
+- With augmentation: ~88.7% accuracy (projected target above)
+
+Illustrative fine-tuning strategy impact (hypothetical):
+- Freeze all layers: lower accuracy than fine-tuning
+- Fine-tune last 30 layers: closer to the ~88.7% projected target
+
+Illustrative input resolution impact (hypothetical):
+- 128×128: lower accuracy than 224×224
+- 224×224: the configuration used for the ~88.7% projected target
+- 299×299: marginal further gain possible, at higher compute cost
 
 ---
 
 ## Model Comparison
+
+> **Note**: Accuracy/training-time figures quoted in this section (e.g. "88.7%", "52 min") are the same **projected, not measured** numbers from [Model Performance Comparison](#model-performance-comparison-projected--not-measured) above. Architectural strengths/weaknesses (parameter counts, relative speed) are structural facts about the models; the accuracy figures are not.
 
 ### Strengths and Weaknesses
 
@@ -680,7 +684,7 @@ All models showed:
 
 #### ResNet50
 **Strengths**:
-- Highest accuracy (88.7%)
+- Highest projected accuracy (88.7%, not measured)
 - Strong feature extraction
 - Handles complex patterns well
 - Pre-trained on large dataset
@@ -696,7 +700,7 @@ All models showed:
 
 #### EfficientNetB0
 **Strengths**:
-- Excellent accuracy-efficiency balance (87.1%)
+- Excellent projected accuracy-efficiency balance (87.1%, not measured)
 - Compact model size (5M parameters)
 - Reasonable training time (42 min)
 - State-of-the-art architecture
@@ -717,7 +721,7 @@ All models showed:
 - Good real-time performance
 
 **Weaknesses**:
-- Lower accuracy (84.5%)
+- Lower projected accuracy (84.5%, not measured)
 - Limited capacity for complex patterns
 
 **Best For**: Mobile applications, edge devices, real-time systems, IoT deployment
@@ -739,43 +743,35 @@ All models showed:
 
 ## Conclusion
 
-### Summary of Achievements
+> **⚠️ Projected, not measured.** As throughout this README, the specific figures in this section (88.7%, 78.3%, 6.6 percentage points, etc.) are projected targets carried over from the [Model Performance Comparison](#model-performance-comparison-projected--not-measured) table, not results from a completed run. See [Known Limitations](#known-limitations) below.
 
-This project successfully developed a comprehensive action classification system for the Stanford 40 Actions dataset, achieving the following:
+### Summary of What This Project Delivers
 
-1. **High Accuracy**: ResNet50 model achieved 88.7% test accuracy, demonstrating effective action recognition in still images.
+This project developed a comprehensive, runnable action classification pipeline for the Stanford 40 Actions dataset. Concretely, as of this writing:
 
-2. **Comprehensive Comparison**: Implemented and compared 6 different architectures (Custom CNN, ResNet50, VGG16, EfficientNetB0, MobileNetV2, Vision Transformer), providing insights into their trade-offs.
+1. **Accuracy (projected, not measured)**: The pipeline targets ~88.7% test accuracy with ResNet50 based on how this architecture performs on comparable transfer-learning benchmarks; this repository has not yet produced a trained ResNet50 checkpoint or a measured test accuracy.
 
-3. **Production-Ready System**: Developed complete pipeline including data loading, preprocessing, training, evaluation, and real-time inference.
+2. **Comprehensive Comparison (implemented, not yet run)**: The code implements and is designed to compare 6 different architectures (Custom CNN, ResNet50, VGG16, EfficientNetB0, MobileNetV2, Vision Transformer) — see `models.py`. No comparison run has actually been executed.
 
-4. **Detailed Analysis**: Generated extensive visualizations and metrics including confusion matrices, per-class performance, and training curves.
+3. **Pipeline (implemented, not "production-ready")**: A complete pipeline exists for data loading, preprocessing, training, evaluation, and inference (`data_loader.py`, `train.py`, `evaluate.py`, `inference.py`). It compiles and is structurally complete, but has not been exercised end-to-end against the real dataset in this repository, so it should not be considered validated or production-ready.
 
-5. **Flexible Deployment**: Provided models ranging from lightweight (MobileNetV2, 3.5M params) to high-accuracy (ResNet50, 25M params) suitable for various deployment scenarios.
+4. **Detailed Analysis (capability exists, no output generated)**: `evaluate.py` is written to generate confusion matrices, per-class performance, and training curves, but no such artifacts currently exist in `results/` because no training/evaluation run has happened.
 
-### Key Learnings
+5. **Flexible Deployment (architectural claim only)**: Models ranging from lightweight (MobileNetV2, 3.5M params) to larger (ResNet50, 25M params) are implemented in code; this is a statement about the architectures offered, not about deployment-tested, trained weights.
 
-1. **Transfer Learning Power**: Pre-trained models significantly outperformed custom CNN (88.7% vs 78.3%), validating the effectiveness of transfer learning.
+### Key Learnings (Anticipated — Not Empirically Validated)
 
-2. **Data Augmentation Critical**: Augmentation improved accuracy by 6.6 percentage points, crucial for this moderate-sized dataset (9,532 images).
+These are expectations drawn from the general transfer-learning literature that motivated this project's design, not conclusions drawn from an experiment run on this dataset:
 
-3. **Fine-tuning Strategy Matters**: Fine-tuning last 30 layers of ResNet50 performed better than freezing all or fine-tuning fewer layers.
+1. **Transfer Learning Power (expected)**: Pre-trained models are expected to outperform the custom CNN (~88.7% vs ~78.3%, projected), consistent with the general effectiveness of transfer learning — not yet confirmed here.
 
-4. **Model Selection Trade-offs**: No single model is universally best; choice depends on accuracy requirements, computational constraints, and deployment environment.
+2. **Data Augmentation (expected)**: Augmentation is expected to meaningfully improve accuracy on a moderate-sized dataset like this one (9,532 images) — the specific "+6.6 percentage points" figure is a hypothetical illustration (see [Ablation Studies](#ablation-studies-illustrative--not-measured)), not a measured result.
 
-5. **Action Recognition Challenges**: Similar poses and contexts remain challenging (e.g., waving vs. applauding, fixing bike vs. fixing car), suggesting need for better contextual understanding.
+3. **Fine-tuning Strategy (expected)**: Fine-tuning more layers of ResNet50 is expected to outperform freezing all layers — not yet confirmed here.
 
-### Limitations
+4. **Model Selection Trade-offs**: No single model is universally best; choice depends on accuracy requirements, computational constraints, and deployment environment. (This is a general, architecture-level observation, independent of the unmeasured accuracy figures.)
 
-1. **Dataset Size**: 9,532 images is moderate; larger datasets could improve performance further.
-
-2. **Single Person Focus**: Models primarily handle single-person actions; multi-person scenarios not extensively tested.
-
-3. **Temporal Information**: Still images lack temporal context that videos provide, limiting understanding of dynamic actions.
-
-4. **Background Bias**: Models may rely on background context rather than pure action features.
-
-5. **Computational Requirements**: Best performing models require GPU for practical training and inference.
+5. **Action Recognition Challenges (expected)**: Similar poses and contexts (e.g., waving vs. applauding, fixing bike vs. fixing car) are plausible sources of confusion based on the class list, not confirmed by an actual confusion matrix.
 
 ### Future Work
 
@@ -813,9 +809,25 @@ This action classification system has potential applications in:
 
 ### Conclusion Statement
 
-This project demonstrates the effectiveness of deep learning for action recognition in still images, achieving competitive accuracy while providing practical tools for deployment. The comprehensive comparison of architectures offers valuable insights for practitioners choosing models for specific use cases. The modular, well-documented codebase serves as a strong foundation for further research and real-world applications in human action understanding.
+This project implements a deep learning pipeline for action recognition in still images, designed to compare multiple architectures and provide practical tools for training, evaluation, and inference. The comprehensive comparison of architectures is intended to offer insights for practitioners choosing models for specific use cases once it has actually been run. The modular codebase is intended as a foundation for further work, but it should be treated as unvalidated until a real training run is completed.
 
-**Final Performance**: 88.7% accuracy with ResNet50, surpassing typical benchmarks for this challenging task, validates the chosen methodology and positions this system for practical deployment in action recognition applications.
+**Target Performance**: 88.7% accuracy with ResNet50 (projected, not measured — see [Known Limitations](#known-limitations)). This target is based on how ResNet50 typically performs on comparable transfer-learning image-classification tasks; it has not been reproduced by an actual training run in this repository, so it should not be read as a validated result or a claim of practical deployment readiness.
+
+## Known Limitations
+
+1. **No training has been run in this repository.** `data/Stanford40/JPEGImages/` and `XMLAnnotations/` contain only `.gitkeep` placeholders, and `models/saved_models/`, `models/checkpoints/`, and `results/` are empty or absent. Every accuracy, F1, per-class, ablation, and training-curve figure in this README is a **projected/target metric**, not a measured one. See [PROJECT_STATUS.md](PROJECT_STATUS.md) for the itemized completion status.
+
+2. **No GPU was available in the environment this repo was authored in** (per PROJECT_STATUS.md), and the full 6-model × up-to-50-epoch training plan is estimated at several hours even on the recommended GPU hardware — impractical to run as a quick coursework sanity check on CPU only.
+
+3. **Dataset Size**: 9,532 images is moderate; larger datasets could improve performance further, whenever a real run is done.
+
+4. **Single Person Focus**: The dataset/models are designed around single-person actions; multi-person scenarios are not addressed.
+
+5. **Temporal Information**: Still images lack the temporal context that videos provide, limiting understanding of dynamic actions.
+
+6. **Background Bias**: Models may end up relying on background context rather than pure action features — a risk to check for once real training happens, not something that has been tested.
+
+7. **Computational Requirements**: The best-performing models (ResNet50, EfficientNetB0) are expected to require a GPU for practical training and inference.
 
 ---
 
@@ -958,6 +970,6 @@ For questions, issues, or contributions, please:
 
 ---
 
-**Last Updated**: November 2025  
+**Last Updated**: August 2026  
 **Version**: 1.0.0  
-**Status**: Production Ready ✅
+**Status**: Pipeline implemented; no training run has been executed yet — see [Known Limitations](#known-limitations) and [PROJECT_STATUS.md](PROJECT_STATUS.md) 🚧

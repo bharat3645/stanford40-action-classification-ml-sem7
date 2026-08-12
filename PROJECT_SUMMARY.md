@@ -5,7 +5,7 @@
 **Title**: Stanford 40 Actions Classification System  
 **Version**: 1.0.0  
 **Date**: November 2024  
-**Status**: Production Ready ✅
+**Status**: Pipeline implemented; no training run has been executed yet — the "Expected Performance" figures below are projected targets, not measured results. See [PROJECT_STATUS.md](PROJECT_STATUS.md) and [README.md](README.md#known-limitations).
 
 ## What's Included
 
@@ -207,25 +207,25 @@ stanford40_action_classification/
 - [x] Authenticated source (Stanford Vision Lab)
 - [x] Properly documented
 
-### ✅ Model Implementation
-- [x] Multiple ML/DL models (6 models implemented)
+### ✅ Model Implementation (code) / ⏳ Training (not yet run)
+- [x] Multiple ML/DL models (6 models implemented in code)
 - [x] Custom CNN architecture
 - [x] Transfer learning (ResNet50, VGG16, EfficientNet, MobileNet)
 - [x] Advanced architecture (Vision Transformer)
-- [x] Proper model training and validation
+- [ ] Proper model training and validation — **not yet executed**; see [Known Limitations](README.md#known-limitations)
 
-### ✅ Comparative Analysis
-- [x] Performance metrics (Accuracy, F1, Precision, Recall)
-- [x] Model comparison tables
-- [x] Visualization of results
-- [x] Detailed analysis and insights
+### ⏳ Comparative Analysis (Projected, Not Yet Measured)
+- [ ] Performance metrics (Accuracy, F1, Precision, Recall) — target metrics are documented and clearly labeled as projected in the README; no run has produced measured metrics yet
+- [x] Model comparison table provided (figures are projected/target values, not measured — labeled as such)
+- [ ] Visualization of results — no `results/plots/` artifacts exist yet (no training run)
+- [x] Written analysis and insights (framed as anticipated findings based on the literature, not measured results)
 
-### ✅ Code Quality
+### Code Quality
 - [x] Well-structured and modular
 - [x] Comprehensive documentation
 - [x] Clear comments
 - [x] Error handling
-- [x] Production-ready
+- [ ] Production-ready — pipeline compiles and is structurally complete, but has not been validated end-to-end (no successful training/evaluation run yet)
 
 ### ✅ GitHub Repository
 - [x] All source code uploaded
@@ -245,7 +245,7 @@ stanford40_action_classification/
 - [x] Problem importance explained
 - [x] Dataset source and statistics
 - [x] Methods with figures/diagrams
-- [x] Experimental results
+- [x] Experimental results section present (figures are projected/target metrics, clearly labeled as not yet measured)
 - [x] Conclusion and learnings
 - [x] References (15+ citations)
 - [x] Similarity index < 10% (original content)
@@ -282,11 +282,11 @@ stanford40_action_classification/
 
 ## Research Contributions
 
-1. **Comprehensive Benchmark**: Systematic comparison of 6 architectures on Stanford 40 Actions
-2. **Transfer Learning Analysis**: Detailed study of fine-tuning strategies
-3. **Practical System**: Production-ready inference pipeline
-4. **Extensive Documentation**: 30,000+ words of technical documentation
-5. **Reproducible Results**: Complete code with configuration management
+1. **Benchmark Design**: A systematic comparison of 6 architectures on Stanford 40 Actions is implemented and documented; the actual benchmark run has not been executed yet (see [Known Limitations](README.md#known-limitations))
+2. **Transfer Learning Analysis**: A designed study of fine-tuning strategies (ablation plan documented in README; not yet run)
+3. **Practical System**: Inference pipeline implemented; not yet exercised against a trained model
+4. **Extensive Documentation**: 30,000+ words of technical documentation, including an explicit account of what is implemented vs. what has actually been measured
+5. **Reproducible Setup**: Complete code with configuration management, ready to produce real results once a training run is executed
 
 ## Use Cases
 
@@ -371,16 +371,14 @@ If you use this project in your research, please cite:
 ## Final Notes
 
 This project demonstrates:
-- ✅ Strong understanding of deep learning
-- ✅ Excellent software engineering practices
+- ✅ Working knowledge of multiple deep learning architectures
+- ✅ Well-structured, modular software engineering practices
 - ✅ Comprehensive documentation
-- ✅ Production-ready code quality
-- ✅ Research-level analysis
-- ✅ Practical deployment considerations
+- ⏳ Code that compiles and is structurally complete, but has not been exercised end-to-end (no training run has been executed — see [Known Limitations](README.md#known-limitations))
+- ⏳ Research-informed design (accuracy figures throughout are literature-informed projections, not measured results)
+- ⏳ Deployment-oriented design, not yet deployment-validated
 
-**Status**: Ready for submission and deployment! 🚀
-
-**Quality Score**: ⭐⭐⭐⭐⭐ (5/5)
+**Status**: Coursework submission — pipeline complete, training/evaluation not yet run. See [README.md](README.md#known-limitations) and [PROJECT_STATUS.md](PROJECT_STATUS.md) for the honest completion status.
 
 **Estimated Development Time**: 40+ hours
 
@@ -390,7 +388,7 @@ This project demonstrates:
 
 ---
 
-**Last Updated**: November 2024  
+**Last Updated**: August 2026  
 **Version**: 1.0.0  
-**Maintainer**: Your Name  
-**Status**: Production Ready ✅
+**Maintainer**: Bharat Singh Parihar  
+**Status**: Pipeline implemented; no training run has been executed yet — see [Known Limitations](README.md#known-limitations)
