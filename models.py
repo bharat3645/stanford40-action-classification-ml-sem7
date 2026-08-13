@@ -10,8 +10,8 @@ from tensorflow.keras.applications import (
     ResNet50, VGG16, EfficientNetB0, MobileNetV2, InceptionV3
 )
 from tensorflow.keras.layers import (
-    Conv2D, MaxPooling2D, Dense, Dropout, Flatten, 
-    GlobalAveragePooling2D, BatchNormalization, Activation,
+    Conv2D, MaxPooling2D, Dense, Dropout, Flatten,
+    GlobalAveragePooling2D, GlobalAveragePooling1D, BatchNormalization, Activation,
     MultiHeadAttention, LayerNormalization, Add
 )
 import config

@@ -413,6 +413,45 @@ pip install -r requirements.txt
 python -c "import tensorflow as tf; print(tf.__version__); print('GPU Available:', tf.config.list_physical_devices('GPU'))"
 ```
 
+### Troubleshooting
+
+**Out of Memory Error**
+```bash
+# Reduce batch size in config.py
+BATCH_SIZE = 16  # or even 8
+
+# Or use a smaller model
+python main.py --models mobilenet
+```
+
+**Slow Training**
+```bash
+# Enable GPU (if available)
+import os
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+
+# Or reduce epochs
+python main.py --epochs 10
+
+# Or use smaller dataset
+python main.py --limit 2000
+```
+
+**Dataset Not Found**
+```bash
+# Run dataset downloader
+python download_dataset.py
+
+# Or manually place images in data/Stanford40/JPEGImages/
+# Then run: python generate_annotations.py
+```
+
+**Module Not Found**
+```bash
+# Reinstall dependencies
+pip install -r requirements.txt --upgrade
+```
+
 ---
 
 ## Usage

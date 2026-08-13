@@ -68,7 +68,6 @@ This comprehensive deep learning project provides a complete solution for human 
 - **QUICK_START.md**: Get started in minutes
 - **EXAMPLE_USAGE.md**: Practical code examples
 - **LICENSE**: MIT License
-- **CITATION.cff**: Academic citation information
 
 ### Support Files
 
@@ -190,8 +189,7 @@ stanford40_action_classification/
 │   ├── setup.py               # Installation script
 │   ├── download_dataset.py    # Dataset downloader
 │   ├── .gitignore             # Git ignore patterns
-│   ├── LICENSE                # MIT License
-│   └── CITATION.cff           # Citation information
+│   └── LICENSE                # MIT License
 │
 └── Output Directories (created automatically)
     ├── data/                  # Dataset storage

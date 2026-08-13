@@ -7,18 +7,18 @@ Complete deep learning system for human action recognition in still images using
 
 ### Phase 1: Setup and Configuration ✅ COMPLETED
 - [x] Created `config.py` with all hyperparameters and paths
-- [x] Installed all required dependencies (TensorFlow 2.15.0, Keras, NumPy, Pandas, etc.)
-- [x] Created complete directory structure (data, models, results, plots, metrics)
-- [x] Organized Stanford40 dataset (9,532 images)
-- [x] Generated XML annotations for all images
-- [x] Verified data loader functionality
+- [x] Declared all required dependencies (TensorFlow 2.15.0, Keras, NumPy, Pandas, etc.) in `requirements.txt`
+- [x] Created complete directory structure (data, models, results, plots, metrics) with `.gitkeep` placeholders
+- [ ] Organized Stanford40 dataset (9,532 images) — **not done**; the dataset was never downloaded into this repository
+- [ ] Generated XML annotations for all images — **not done**; no images exist to annotate
+- [ ] Verified data loader functionality — **not done**; `data_loader.py` has not been run against real data
 
-### Phase 2: Data Preparation ✅ COMPLETED
-- [x] Moved 9,532 images to proper directory structure
-- [x] Created annotation files for all images
-- [x] Fixed configuration references in data_loader.py
-- [x] Tested data loading with sample images (50/50 passed)
-- [x] Verified image preprocessing pipeline (224x224x3)
+### Phase 2: Data Preparation ⏳ NOT STARTED
+- [ ] Move 9,532 images to proper directory structure — **not done**; `data/Stanford40/JPEGImages/` and `XMLAnnotations/` contain only `.gitkeep` placeholders, no actual images
+- [ ] Create annotation files for all images — **not done**
+- [x] Fixed configuration references in data_loader.py (code-level fix, does not require the dataset to be present)
+- [ ] Test data loading with sample images — **not done**; no sample images exist in this repo to test against
+- [ ] Verify image preprocessing pipeline (224x224x3) — **not done**; unverified end-to-end
 
 ### Phase 3: Model Training (Planned Configuration)
 Training plan for all models on the full dataset (9,532 images) with 30 epochs -- see README.md for the results actually reported for this project:
@@ -88,12 +88,12 @@ stanford40_action_classification/
 ├── config.py ✅
 ├── data/
 │   └── Stanford40/
-│       ├── JPEGImages/ ✅ (9,532 images)
-│       └── XMLAnnotations/ ✅ (9,532 annotations)
+│       ├── JPEGImages/ ⏳ (.gitkeep only — dataset not downloaded)
+│       └── XMLAnnotations/ ⏳ (.gitkeep only — dataset not downloaded)
 ├── models/
-│   ├── saved_models/ ✅ (models will be saved here)
-│   └── checkpoints/ ✅
-├── data_loader.py ✅
+│   ├── saved_models/ ⏳ (empty — no training run yet)
+│   └── checkpoints/ ⏳ (empty — no training run yet)
+├── data_loader.py ✅ (code written, not yet exercised against real data)
 ├── models.py ✅
 ├── train.py ✅
 ├── evaluate.py ✅
@@ -102,13 +102,13 @@ stanford40_action_classification/
 └── requirements.txt ✅
 ```
 
-## System Information
+## System Information (Target Environment — Not an Observed Run)
 - **Python Version**: 3.12
 - **TensorFlow Version**: 2.15.0
-- **GPU Available**: No (CPU training)
+- **GPU Available**: No (CPU training assumed; no training has actually been run)
 - **Operating System**: Windows
-- **Total Dataset Size**: 9,532 images
-- **Image Format**: JPEG (224x224x3 after preprocessing)
+- **Total Dataset Size**: 9,532 images (per the public Stanford40 dataset spec — not present in this repo, see Phase 2 above)
+- **Image Format**: JPEG (224x224x3 after preprocessing, per `config.py`)
 
 ## Expected Results (Based on Documentation)
 | Model | Accuracy | Parameters | Speed |
@@ -127,12 +127,13 @@ stanford40_action_classification/
 - TensorBoard logs: `models/checkpoints/tensorboard/{model_name}/`
 
 ## Next Steps After Training Completes
-1. ✅ Verify all 5 models are saved
-2. ✅ Run comprehensive evaluation on test set
-3. ✅ Generate confusion matrices and classification reports
-4. ✅ Compare all models side-by-side
-5. ✅ Test inference on sample images
-6. ✅ Generate final project report
+None of these have happened yet — no training run has been executed in this repository:
+1. [ ] Verify all 5 models are saved
+2. [ ] Run comprehensive evaluation on test set
+3. [ ] Generate confusion matrices and classification reports
+4. [ ] Compare all models side-by-side
+5. [ ] Test inference on sample images
+6. [ ] Generate final project report
 
 ## How to Monitor Training Progress
 Check the terminal output or run:
@@ -159,8 +160,8 @@ print(f"Action: {result['top_class']} ({result['top_probability']:.2%})")
 ```
 
 ## Project Completion Checklist
-- [x] Environment setup
-- [x] Dataset preparation  
+- [x] Environment setup (dependencies declared, directory structure created)
+- [ ] Dataset preparation — **not done**; dataset never downloaded, see Phase 2 above
 - [x] Configuration files
 - [ ] Model training execution (see README.md for reported results)
 - [ ] Model evaluation
